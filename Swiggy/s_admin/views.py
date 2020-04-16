@@ -77,15 +77,23 @@ def save_city(request):
 
 
 def update_city(request):
-    return None
+    cno = request.GET.get("cno")
+    cname = request.GET.get("cname")
+    d1 = {"cno":cno,"cname":cname}
+    return render(request,"s_admin/open_city.html",{"update_data":d1,"cdata":StateModel.objects.all()})
 
 
 def update_city_data(request):
-    return None
+    cno = request.POST.get("s1")
+    cname = request.POST.get("s2")
+    CityModel.objects.filter(city_no = cno).update(city_name=cname)
+    return redirect('open_city')
 
 
 def delete_city(request):
-    return None
+    cno = request.GET.get("cno")
+    CityModel.objects.filter(city_no=cno).delete()
+    return redirect('open_city')
 
 
 def open_area(request):
