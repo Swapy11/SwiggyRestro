@@ -1,0 +1,51 @@
+
+
+{% extends 's_admin/common.html' %}
+
+{% block common %}
+
+    {% load static %}
+
+    {% if request.session.status %}
+    <table align="center" border="0">
+    <tr>
+        <th>
+            {% include 's_admin/menu.html' %}
+        </th>
+    </tr>
+
+    <tr>
+        <th>
+<table align="center" border="2">
+                <tr bgcolor="yellow">
+
+                    <th style="text-align: center" width="200">   Name   </th>
+                    <th style="text-align: center" width="100">Status</th>
+                </tr>
+
+                {% for x in sdata %}
+                    <tr>
+                    <th style="text-align: center" width="50">{{ x.restro_name }}</th>
+                    <th style="text-align: center" width="200">{{ x.restro_status }}</th>
+
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </th>
+    </tr>
+
+    </table>
+     {% else %}
+
+        <h3 style="text-align: center;font-family: 'Agency FB';font-size: 25px;color: red">
+            Please Do Login
+        </h3>
+
+    {% endif %}
+
+
+
+
+
+{% endblock %}
