@@ -16,19 +16,24 @@
 
     <tr>
         <th>
-<table align="center" border="2">
+            <table align="center" border="2">
                 <tr bgcolor="yellow">
 
-                    <th style="text-align: center" width="200">   Name   </th>
+                    <th style="text-align: center" width="200">Name</th>
                     <th style="text-align: center" width="100">Status</th>
+                    <th style="text-align: center" width="200">Area</th>
+                    <th style="text-align: center" width="100">Contact No</th>
+                    <th style="text-align: center" width="100">Email</th>
                 </tr>
 
                 {% for x in sdata %}
                     <tr>
                     <th style="text-align: center" width="50">{{ x.restro_name }}</th>
                     <th style="text-align: center" width="200">{{ x.restro_status }}</th>
+                    <th style="text-align: center" width="50">{{ x.restro_area }}</th>
+                    <th style="text-align: center" width="200">{{ x.restro_contact }}</th>
+                    <th style="text-align: center" width="200">{{ x.restro_email }}</th>
 
-                    
                 </tr>
                 {% endfor %}
             </table>
