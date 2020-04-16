@@ -80,7 +80,7 @@ def update_city(request):
     cno = request.GET.get("cno")
     cname = request.GET.get("cname")
     d1 = {"cno":cno,"cname":cname}
-    return render(request,"s_admin/open_city.html",{"update_data":d1,"cdata":StateModel.objects.all()})
+    return render(request,"s_admin/open_city.html",{"update_data":d1,"cdata":CityModel.objects.all()})
 
 
 def update_city_data(request):
@@ -108,6 +108,24 @@ def save_area(request):
     else:
         return render(request, "s_admin/open_area.html", {"sf": sf})
 
+def update_area(request):
+    ano = request.GET.get("ano")
+    aname = request.GET.get("aname")
+    d1 = {"ano":ano,"aname":aname}
+    return render(request,"s_admin/open_area.html",{"update_data":d1,"cdata":AreaModel.objects.all()})
+
+
+def update_area_data(request):
+    ano = request.POST.get("s1")
+    aname = request.POST.get("s2")
+    AreaModel.objects.filter(area_no = ano).update(area_name=aname)
+    return redirect('open_area')
+
+
+def delete_area(request):
+    cno = request.GET.get("cno")
+    AreaModel.objects.filter(area_no=cno).delete()
+    return redirect('open_area')
 
 def open_type(request):
     return render(request, 's_admin/open_type.html', {"sf": RestaurantTypeForm(), "sdata": RestaurantTypeModel.objects.all()})
