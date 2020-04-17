@@ -139,6 +139,24 @@ def save_type(request):
     else:
         return render(request, "s_admin/open_type.html", {"sf": sf})
 
+def update_type(request):
+    ano = request.GET.get("tno")
+    aname = request.GET.get("tname")
+    d1 = {"tno":tno,"tname":aname}
+    return render(request,"s_admin/open_type.html",{"update_data":d1,"tdata":TypeModel.objects.all()})
 
-def view_restaurant(request):
-    return render(request, 's_admin/view_restaurant.html', { "sdata": RestaurantModel.objects.all()})
+
+def update_type_data(request):
+    tno = request.POST.get("s1")
+    tname = request.POST.get("s2")
+    TypeModel.objects.filter(type_no = tno).update(type_name=tname)
+    return redirect('open_type')
+
+
+def delete_type(request):
+    tno = request.GET.get("tno")
+    TypeModel.objects.filter(type_no=tno).delete()
+    return redirect('open_type')
+
+#def view_restaurant(request):
+#    return render(request, 's_admin/view_restaurant.html', { "sdata": RestaurantModel.objects.all()})
